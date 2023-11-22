@@ -1,17 +1,36 @@
 
 /* CSS para todo*/
 *{
-    margin: 0 0;
-    padding: 0 0;
+    margin: 100 0;
     font-family: Arial, Helvetica, sans-serif;
 }
 .container{
     width: 80%;
     margin: 0 auto;
-    padding: 1%;
+    padding: 0%;
 }
 
+#create-post > div {
+    margin-bottom: 1rem;
+}
 
+#added-tags > span {
+    display: inline-block;
+    border: 1px solid gray;
+    border-radius: 0.25rem;
+    background-color: lightblue;
+    padding: 0 0.2rem 0.1rem 0.2rem;
+    margin: 0.25rem 0.25rem 0 0;
+}
+
+#added-tags > span > a {
+    margin-left: 0.25rem;
+    cursor: pointer;
+}
+
+#refresh {
+    margin-right: 0.25rem;
+}
 
 .img-responsive{
     width: 100%;
@@ -33,7 +52,6 @@
 .img-responsive:hover{
     filter: opacity(.5); 
 }
-
 
 .text-right{
     text-align: right;
@@ -75,8 +93,9 @@ a:hover{
     background-color: #F78C04;
     color: white;
     cursor: pointer;
+ 
 }
-.btn-primary:hover{
+.btn:hover{
     color: white;
     background-color: #F75600;
 }
@@ -93,8 +112,10 @@ h3{
 }
 .float-text{
     position: absolute;
-    top: -30px;
+    top: -10px;
     left: 45%;
+    color: black;
+    background-color: #F78C04;
 }
 fieldset{
     border: 1px solid white;
@@ -112,6 +133,7 @@ fieldset{
     color: green
 }
 
+/*Estilos para las cookies*/
 .cookie-container {
     position: fixed;
     bottom: -100%;
@@ -158,52 +180,6 @@ fieldset{
     cursor: pointer;
   }
 
-/* CSS para barra de navegación */
-
-.logo{
-    width: 10%;
-    float: left;
-}
-.menu{
-    line-height: 60px;
-}
-.menu ul{
-    list-style-type: none;
-}
-
-
-.menu ul li{
-    display: inline;
-    padding: 1%;
-    font-weight: bold;
-    position:relative;
-}
-
-
- /* items del menu desplegable al pasar el ratón */
-.menu ul ul {
-    display:none;
-    position:absolute;
-    top:100%;
-    left:0;
-    background:#eee;
-    padding:0;
-   }
-
-.menu ul ul li {
-    float:none;
-    width:150px
-   }
-.menu ul ul a {
-    line-height:120%;
-    padding:10px 15px;
-   }
-   
-   /* items del menu desplegable al pasar el ratón */
-   
-.menu ul li:hover > ul {
-    display:block;
-   }
 
 /* CSS para sección busqueda alimentos */
 
@@ -223,11 +199,11 @@ fieldset{
     border: none;
     border-radius: 5px;
 }
-
+/*
 .popup{
     background-color: rgba(0, 0, 0, 0.3);
       width: 50%;
-      height:100%;
+      height:10%;
       padding: 30px 40px;
       position: absolute;
       transform: translate(-50%,-50%);
@@ -238,8 +214,8 @@ fieldset{
       display: none; 
       text-align: center;
       z-index:5;
-    height: 100vh;
-    width: 100vw;
+    height: 50vh;
+    width: 50vw;
     transition: opacity 0.3s ease;
   }
   
@@ -261,14 +237,14 @@ fieldset{
       margin-right: 50px;
   }
   .popup img{
-      width:35%;
-      height:90%;
+      width:60%;
+      height:80%;
   }
 
-  
+  */
 /* CSS para Categorias */
 .categories{
-    padding: 4% 0;
+    padding: 6% 0;
 }
 
 
@@ -300,8 +276,8 @@ fieldset{
     padding: 4% 0;
 }
 .food-menu-box{
-    width: 43%;
-    height: 150px;
+    width: 45%;
+    height: 200px;
     margin: 1%;
     padding: 2%;
     float: left;
@@ -310,7 +286,7 @@ fieldset{
 }
 
 .food-menu-img{
-    width: 20%;
+    width: 22%;
     float: left;
 }
 
@@ -367,7 +343,7 @@ fieldset{
     bottom: 20px;
     right: 20px;
     width: 50px;
-    height: 40px;
+    height: 60px;
     background: #F78C04;
     text-align: center;
     padding: 10px 0;
@@ -392,33 +368,31 @@ html{
 /* CSS  para tamaño móvil */
 
 @media only screen and (max-width:768px){
-    .logo{
-        width: 80%;
-        float: none;
-        margin: 1% auto;
-    }
 
-    .menu ul{
+    .navbar{
         text-align: center;
     }
-
     .food-search input[type="search"]{
         width: 90%;
         padding: 2%;
-        margin-bottom: 3%;
+        margin-top: 10%;
     }
-
     .btn{
-        width: 91%;
+        width: 50%;
         padding: 2%;
-    }
+        margin-bottom: 10%;
 
+    }
     .food-search{
         padding: 10% 0;
     }
 
     .categories{
-        padding: 20% 0;
+        padding: 10% 0;
+    }
+    .categories img{
+        box-align: center;
+        margin-left: 100px;
     }
     h2{
         margin-bottom: 10%;
@@ -429,11 +403,12 @@ html{
     }
 
     .food-menu{
-        padding: 20% 0;
+        padding: 10% 0;
     }
 
     .food-menu-box{
-        width: 90%;
+        width: 95%;
+        height: 10%;
         padding: 5%;
         margin-bottom: 5%;
     }

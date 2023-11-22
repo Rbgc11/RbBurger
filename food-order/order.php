@@ -45,7 +45,7 @@
         <div class="container">
             
             <h2 class="text-center text-order">Rellena Este Formulario para Confirmar tu Pedido</h2>
-            <p class="text-center text-order">Para rellenar automaticamente tus datos de tarjeta, registrate en la web</p>
+            <p class="text-center text-order">Para rellenar automaticamente los detalles de la entrega para el resto de pedidos, pulsa el botón "Guardar Datos"</p>
 
             <form action="" method="POST" class="order">
                 <fieldset>
@@ -72,7 +72,11 @@
     
                     <div class="food-menu-desc">
                         <h3><?php echo $title; ?></h3>
-                        <input type="hidden" name="food" value="<?php echo $title; ?>">
+                        <input type="hidden" name="food_title" value="<?php echo $title; ?>">
+                        <!--
+                        <h3 hidden><?php echo $food_id; ?></h3>
+                        <input type="hidden" name="food_id" value="<?php echo $food_id; ?>">-->
+
 
                         <p class="food-price"><?php echo $price; ?>€</p>
                         <input type="hidden" name="price" value="<?php echo $price; ?>">
@@ -83,8 +87,9 @@
                     </div>
 
                 </fieldset>
-                
-                <fieldset>
+
+
+                <fieldset class="js-form">
                     <legend>Detalles de la Entrega:</legend>
                     <div class="order-label">Nombre Completo</div>
                     <input type="text" name="full-name" placeholder="" class="input-responsive" required>
@@ -108,9 +113,14 @@
                     <input type="number" name="cvv" placeholder="XXX"  maxlength="3" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" class="input-responsive" required>
 
                     <input type="submit" name="submit" value="Confirmar Pedido" class="btn btn-primary">
+
+                    <button type="button" class="js-button  btn btn-secondary ">Guardar Datos</button>
+
                 </fieldset>
 
             </form>
+
+
             
             <?php
                 //Verificamos si el botón de envio es pulsado o no
@@ -118,7 +128,7 @@
                 {
                     // Obtenemos todos los detalles del formulario
 
-                    $food = $_POST['food'];
+                    $food_title = $_POST['food_title'];
                     $price = $_POST['price'];
                     $qty = $_POST['qty'];
 
@@ -127,6 +137,7 @@
                     $order_date = date("Y-m-d h:i:sa");
 
                     $status = "Pedido"; // Pedido, en camino, entregado, anulado
+                    $food_id = $_POST['food_id'];
 
                     $customer_name = $_POST['full-name'];
                     $customer_contact = $_POST['contact'];
@@ -139,12 +150,13 @@
                     //Guardamos el Pedido en la base de datos
                     //Creamos SQL para guardar los datos
                     $sql2 = "INSERT INTO tbl_order SET
-                        food = '$food',
+                        food_title = '$food_title',
                         price = $price,
                         qty = $qty,
                         total = $total,
                         order_date ='$order_date',
                         status = '$status',
+                        food_id = '$food_id',
                         customer_name = '$customer_name',
                         customer_contact ='$customer_contact',
                         customer_email ='$customer_email',
@@ -163,7 +175,7 @@
                     if($res2==true)
                     {
                         //Sentencia ejecutada y pedido guardado 
-                        $_SESSION['order'] = "<div class='success text-center'>Pedido Realizado Correctamente.</div>";
+                        $_SESSION['order'] = "<div class='success text-center'>Pedido Realizado Correctamente. Cantidad: $qty | $title | $total €</div>";
                         header('location:'.SITEURL);
                     }
                     else
@@ -181,3 +193,17 @@
     </section>
 
     <?php include('partials-front/footer.php'); ?>
+    
+    <script src="https://unpkg.com/form-storage@1.2.0/build/form-storage.js"></script>
+        <script>
+        var formStorage = new FormStorage('.js-form');
+        formStorage.apply();
+        var button = document.querySelector('.js-button');
+        button.addEventListener('click', function(){
+            formStorage.save();
+        });
+    </script>
+
+
+
+

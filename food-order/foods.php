@@ -11,9 +11,17 @@
 
         </div>
     </section>
+    <?php 
+            if(isset($_SESSION['add']))  //Verificamos si la sesion esta configurada o no
+            {
+                echo $_SESSION['add'];  //Mostraremos el sistema de mensaje si lo esta
+                unset($_SESSION['add']); //Eliminar el mensaje del sistema 
+            }
+        ?>
+    <?php
+    
 
-
-
+?>
     <!-- Sección lista alimentos -->
     <section class="food-menu">
         <div class="container">
@@ -21,7 +29,7 @@
 
             <?php
                 //Mostramos los alimentos que están activos
-                $sql ="SELECT * FROM tbl_food WHERE active='Yes'";
+                $sql ="SELECT * FROM tbl_food WHERE active='Si'";
 
                 //Ejecutamos la sentencia
                 $res=mysqli_query($conn, $sql);
@@ -42,7 +50,7 @@
                         $description = $row['description'];
                         $image_name = $row['image_name'];
                         ?>
-                        <div class="food-menu-box">
+                        <div class="food-menu-box"  method="POST">
                             <div class="food-menu-img">
                                 <?php
                                     //Verificamos si la imagen está disponible o no
@@ -61,7 +69,7 @@
                                 ?>
                             </div>
 
-                            <div class="food-menu-desc">
+                            <div  class="food-menu-desc">
                                 <h4 ><?php echo $title; ?></h4>
                                 <p class="food-price"><?php echo $price; ?>€</p>
                                 <p class="food-detail">
@@ -70,6 +78,8 @@
                                 <br>
 
                                 <a href="<?php echo SITEURL; ?>order.php?food_id=<?php echo $id; ?>" class="btn btn-primary">Pedir Ahora</a>
+                                <a href="<?php echo SITEURL; ?>cart.php?food_id=<?php echo $id; ?>" class="btn btn-primary">Carrito</a>
+
                             </div>
                         </div>
                         <?php
@@ -97,3 +107,59 @@
     </section>
 
     <?php include('partials-front/footer.php'); ?>
+
+    <?php  
+    //Procesaremos el valor del formulario y se guardará en la base de datos
+    //Verificaremos si el botón se hace clik o no
+
+    if(isset($_POST['submit']))    //Asi se verifica si pasa por el metodo de publicacion o no
+    {
+        // El botón se pulsa
+       // echo "Botón Pulsado";
+
+       //1. Obtenemos los datos del formulario
+       $title = $_POST['title'];
+       $description = $_POST['description'];
+       $price = $_POST['price']; //Contrasea cifrada con "md5"
+       $image_name = $_POST['image_name'];
+       $food_id = $_POST['food_id'];
+       //2. SQL Query guarda los datos en la base de datos
+       //el id no se recoge ya que esta en auto incremento, por lo que solo se pasa nombre completo, usuario y contraseña
+       $sql = "INSERT INTO tbl_cart SET 
+            tilte='$tilte',
+            description='$description',
+            price='$price',
+            image_name='$image_name',
+            food_id = '$food_id'
+       ";
+
+       //3. Ejecutaremos Query y se guarda los datos en la base de datos
+       $res = mysqli_query($conn, $sql) or die(mysqli_error()); 
+
+       //4. Verificamos si los datos (Query esta ejecutado ) están insertados o no y se muestra el mensaje
+       if($res==TRUE)
+       {
+            //Dato introducido
+            //echo "Datos Introducidos";
+            //Creamos una variable para mostrar el mensaje 
+            $_SESSION['add'] = "<div class='success'>Administrador Agregado Correctamente</div>";
+            //Redirigimos a la pagina de Administración de Administración
+            header("location:".SITEURL); 
+            
+
+       }
+       else
+       {
+            //No se pueden insertar los datos
+            //echo "Error al Insertar Datos";
+            //Creamos una variable para mostrar el mensaje 
+            $_SESSION['add'] = "<div class='error'>Error al Añadir Administrador</div>";
+            //Redirigimos a la pagina de Añadir Administración
+            header("location:".SITEURL); 
+
+       }
+    }
+ 
+
+
+?>

@@ -2,7 +2,12 @@
 
 <div class="main-content">
     <div class="wrapper">
-        <h1>Admisnitración Comida</h1>
+        <h1>Administración Comida</h1>
+
+        <?php 
+
+     
+?>
 
         <br /><br />
         <?php 
@@ -58,13 +63,14 @@
                         <th>Titulo</th>
                         <th>Precio</th>
                         <th>Imagen</th>
+                        <th>Categoria</th>
                         <th>Destacado</th> 
                         <th>Activo</th> 
                         <th>Acciones</th> 
                     </tr>
                     <?php
                         //Consultamos para obtener todas las comidas  de la base de datos
-                        $sql= "SELECT * FROM tbl_food";
+                        $sql= "SELECT * FROM tbl_food ORDER BY category_id ASC" ;
 
                         //Ejecutamos la sentencia
                         $res = mysqli_query($conn, $sql);
@@ -86,6 +92,7 @@
                                 $title = $row['title'];
                                 $price = $row['price'];
                                 $image_name = $row['image_name'];
+                                $category_id = $row['category_id'];
                                 $featured = $row['featured'];
                                 $active = $row['active'];
 
@@ -114,7 +121,7 @@
                                                 }
                                             ?>
                                         </td>
-
+                                        <td><?php echo $category_id; ?></td>
                                         <td><?php echo $featured; ?></td>
                                         <td><?php echo $active; ?></td>
                                         <td>

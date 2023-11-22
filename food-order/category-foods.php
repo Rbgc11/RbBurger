@@ -44,7 +44,7 @@
 
             <?php
                 //Creamos Sentencia SQL para obtener la comida basada en la Categoría Seleccionada
-                $sql2 = "SELECT * FROM tbl_food WHERE category_id=$category_id AND active='Yes'";
+                $sql2 = "SELECT * FROM tbl_food WHERE category_id=$category_id AND active='Si'";
 
                 //Ejecutamos la Sentencia
                 $res2 = mysqli_query($conn, $sql2);

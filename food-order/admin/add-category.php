@@ -43,7 +43,7 @@
                 <tr>
                     <td>Destacado: </td>
                     <td>
-                        <input type="radio" name="featured" value="Yes"> Sí
+                        <input type="radio" name="featured" value="Si"> Sí
                         <input type="radio" name="featured" value="No"> No
                     </td>
                 </tr>
@@ -51,7 +51,7 @@
                 <tr>
                     <td>Activo: </td>
                     <td>
-                        <input type="radio" name="active" value="Yes"> Sí
+                        <input type="radio" name="active" value="Si"> Sí
                         <input type="radio" name="active" value="No"> No
                     </td>
                 </tr>

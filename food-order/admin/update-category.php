@@ -88,7 +88,7 @@
                     <td>Destacado:</td>
                     <td>
                         <!-- El php sirve para mostrar por defecto marcado si es destacado o activo al darle a actualizar -->
-                        <input <?php if($featured=="Yes"){echo "checked";} ?> type="radio" name="featured" value="Yes"> Sí 
+                        <input <?php if($featured=="Si"){echo "checked";} ?> type="radio" name="featured" value="Si"> Sí 
 
                         <input <?php if($featured=="No"){echo "checked";} ?> type="radio" name="featured" value="No"> No
                     </td>
@@ -97,7 +97,7 @@
                 <tr>
                     <td>Activo:</td>
                     <td>
-                        <input <?php if($active=="Yes"){echo "checked";} ?> type="radio" name="active" value="Yes"> Sí
+                        <input <?php if($active=="Si"){echo "checked";} ?> type="radio" name="active" value="Si"> Sí
                         <input <?php if($active=="No"){echo "checked";} ?> type="radio" name="active" value="No"> No
                     </td>
                 </tr>

@@ -24,7 +24,7 @@
             $price = $row2['price'];
             $current_image = $row2['image_name'];
             $current_category = $row2['category_id'];
-            $current_category2 = $row2['category_id'];
+            $current_category = $row2['category_title'];
             $featured = $row2['featured'];
             $active = $row2['active']; 
     }
@@ -33,6 +33,7 @@
         //Redirigimos a la página de Gestión de Commida
         header('location:'.SITEURL.'admin/manage-food.php');
     }
+
      
 ?>
 
@@ -61,6 +62,7 @@
                     <td>Precio: </td>
                     <td>
                         <input type="number" name="price" value="<?php echo $price; ?>">
+                        
                     </td>
                 </tr>
 
@@ -98,7 +100,7 @@
                         <select name="category">
                             <?php 
                                 //Sentencia para Conseguir las Categorías Activas 
-                                $sql = "SELECT * FROM tbl_category WHERE active='Yes'";
+                                $sql = "SELECT * FROM tbl_category WHERE active='Si'";
                                 //Ejecuta la sentencia
                                 $res = mysqli_query($conn, $sql);
                                 //Contamos filas
@@ -114,6 +116,7 @@
                                         $category_id = $row['id'];
                                         ?>
                                         <option <?php if($current_category==$category_id){echo "selected";}?> value="<?php echo $category_id; ?>"><?php echo $category_title; ?></option>
+
                                        <?php
                                     }
                                 }
@@ -133,7 +136,7 @@
                     <td>Destacado:</td>
                     <td>
                         <!-- El php sirve para mostrar por defecto marcado si es destacado o activo al darle a actualizar -->
-                        <input <?php if($featured=="Yes"){echo "checked";} ?> type="radio" name="featured" value="Yes"> Sí 
+                        <input <?php if($featured=="Si"){echo "checked";} ?> type="radio" name="featured" value="Si"> Sí 
 
                         <input <?php if($featured=="No"){echo "checked";} ?> type="radio" name="featured" value="No"> No
                     </td>
@@ -142,7 +145,7 @@
                 <tr>
                     <td>Activo:</td>
                     <td>
-                        <input <?php if($active=="Yes"){echo "checked";} ?> type="radio" name="active" value="Yes"> Sí
+                        <input <?php if($active=="Si"){echo "checked";} ?> type="radio" name="active" value="Si"> Sí
                         <input <?php if($active=="No"){echo "checked";} ?> type="radio" name="active" value="No"> No
                     </td>
                 </tr>
@@ -167,6 +170,7 @@
                 $description = $_POST['description'];
                 $price = $_POST['price'];
                 $current_image = $_POST['current_image'];
+                $category = $_POST['category'];
                 $category = $_POST['category'];
 
                 $featured = $_POST['featured'];
@@ -248,6 +252,7 @@
                     price = $price,
                     image_name = '$image_name', 
                     category_id = '$category',
+                    category_title = '$category',
                     featured = '$featured',
                     active = '$active'
                     WHERE id='$id'

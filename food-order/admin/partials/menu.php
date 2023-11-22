@@ -7,7 +7,11 @@ include('login-check.php');
     <head>
         <title>Web Restaurante con Pedidos </title>
         <link rel="stylesheet" href="../css/admin.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.css">
+
         <link rel="shortcut icon" href="../images/logo.ico" />
+       
+
 
     </head>
 

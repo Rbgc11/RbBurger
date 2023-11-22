@@ -1,8 +1,5 @@
 <?php include('config/constants.php'); ?>
 
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RbBurger</title>
     <link rel="shortcut icon" href="images/logo.ico" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
     <!-- Link our CSS file -->
     <link rel="stylesheet" href="css/style.css">
@@ -35,59 +33,56 @@
     <!--  Barra de Navegación -->
     <section class="navbar">
         <div class="container">
-            <div class="logo">
-                <a href="<?php echo SITEURL; ?>" title="Logo">
-                    <img src="images/logorb.png" alt="Restaurant Logo" class="img-responsive">
-                </a>
-            </div>
+        <nav class="navbar fixed-top navbar-expand-md navbar-light bg-light">
 
-            <div class="menu text-right">
-                <ul class="cont-ul" >
-                    <li>
-                        <a href="<?php echo SITEURL; ?>">Inicio</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo SITEURL; ?>categories.php">Categorías</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo SITEURL; ?>foods.php">Platos</a>
-                    </li>
-                    <li>
-                        <a href="<?php echo SITEURL; ?>contact.php">Contacto</a>
-                    </li>
-                    <li>            
-                        <a href="<?php echo SITEURL;  ?>login-user.php"><?php echo $_SESSION['username']; ?> </a>
-                            <ul>
-                                <li>
-                                    <a href="<?php echo SITEURL;  ?>logout.php" class="salir">Salir</a>
-                                </li>
-                            </ul>
-                    </li>
+            <a href="<?php echo SITEURL; ?>" class="navbar-brand mb-0 h1">
+                <img src="images/logorb.png" class="d-inline-block align-top" />
+            </a>
+            <button type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" class="navbar-toggler" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                <?php 
-
-
-
-               if (empty($_SESSION['username'])) {
-                $_SESSION['username'] = 'Usuario';
-            }        
-            ?>
+            <div  class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a href="<?php echo SITEURL; ?>" class="nav-link">
+                            Inicio
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="<?php echo SITEURL; ?>categories.php" class="nav-link">
+                            Categorías
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="<?php echo SITEURL; ?>foods.php" class="nav-link">
+                            Alimentos
+                        </a>
+                    </li>
+                    <li class="nav-item active">
+                        <a href="<?php echo SITEURL; ?>contact.php" class="nav-link">
+                            Contacto
+                        </a>
                     </li>
                 </ul>
             </div>
-
-
-            <div class="clearfix"></div>
+        </nav>
+        </div>
+        <div class="clearfix"></div>
         </div>
     </section>
+
+
+
     
     <!-- Para hacer el boton de ir hacia arriba -->
     <div id="progress">
         <span id="progress-value">&#x1F815;</span>
     </div>
-    
-    <!-- Navbar Section Ends Here -->
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+    
 
 
 

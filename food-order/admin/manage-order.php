@@ -2,7 +2,7 @@
 
 <div class="main-content">
     <div class="wrapper">
-        <h1>Admisnitración Pedido</h1>
+        <h1>Administración Pedido</h1>
         
                 <br /><br /><br />
 
@@ -19,7 +19,7 @@
                         <th>S.N.</th>
                         <th>Comida</th>
                         <th>Precio</th>
-                        <th>Cnt</th>
+                        <th>Cantidad</th>
                         <th>Total</th>
                         <th>Fecha</th>
                         <th>Estado</th>
@@ -50,7 +50,7 @@
                             {
                                 //Obtenemos los Pedidos
                                 $id = $row['id'];
-                                $food = $row['food'];
+                                $food_title = $row['food_title'];
                                 $price = $row['price'];
                                 $qty = $row['qty'];
                                 $total = $row['total'];
@@ -69,10 +69,10 @@
 
                                     <tr>
                                         <td><?php echo $sn++; ?>.</td>
-                                        <td><?php echo $food; ?></td>
+                                        <td><?php echo $food_title; ?></td>
                                         <td><?php echo $price; ?>€</td>
                                         <td><?php echo $qty; ?></td>
-                                        <td><?php echo $total; ?></td>
+                                        <td><?php echo $total; ?>€</td>
                                         <td><?php echo $order_date; ?></td>
 
                                         <td>

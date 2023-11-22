@@ -3,10 +3,10 @@
 
 <section class="contenido">
 
-<div class="popup">
+<!--<div class="popup">
         <button id="close">&times;</button>
     <p> <img src="images/reserva.png" alt="" /></a>
-</div>
+</div>-->
 
 <div class="mostrador" id="mostrador">
 		<h2  class="titulo"> ¿Dónde estamos? </h2>
@@ -18,7 +18,7 @@
 <div class="mostrador">
 
 <h2>¿Quiénes Somos? </h2>
-
+<br> <br>
 <p> Somos un restaurante-pizzeria almeriense que cuenta con su local en <br>
     Almería capital. <br>
     Ofrecemos un servicio de <b>compra, recogica 
@@ -27,8 +27,8 @@
     Ofrecemos posibilidad de <b>reserva de mesa </b>, para ello pongase en contacto con nosotros.
     <br> <br>
     <b>Número de contacto:</b>+654803943 <br>
-    <b>Correo de contacto:</b>RbBurger@gmail.com <br> <br>
-    <b>Horario: </b> <br> <br>
+    <b>Correo de contacto:</b>RbBurger@gmail.com <br> 
+    <b>Horario: </b> <br>
     <p>Lunes-Sábado:<b> 12:00 - 22:30 </b> <br>
     <p>Domingo: <b> 12:00 - 15:00 </b> <br>  
     
@@ -42,4 +42,4 @@
 
 <?php include('partials-front/footer.php'); ?>
 
-<script src="popup.js"></script>
+<!--<script src="popup.js"></script>-->
