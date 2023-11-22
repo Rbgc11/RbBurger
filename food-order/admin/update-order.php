@@ -26,7 +26,7 @@
                     //Detalles Disponibles
                     $row=mysqli_fetch_assoc($res);
 
-                    $food = $row['food'];
+                    $food_title = $row['food_title'];
                     $price = $row['price'];
                     $qty = $row['qty'];
                     $status = $row['status'];
@@ -57,7 +57,7 @@
             <table class="tbl-30">
                 <tr>
                     <td>Nombre Comida</td>
-                    <td><b><?php echo $food; ?></b></td>
+                    <td><b><?php echo $food_title; ?></b></td>
                 </tr>
 
                 <tr>
@@ -140,7 +140,7 @@
                         <input type="hidden" name="id" value="<?php echo $id; ?>">
                         <input type="hidden" name="price" value="<?php echo $price; ?>">
                         
-                        <input type="submit" name="submit" value="Update Order" class="btn-secondary">
+                        <input type="submit" name="submit" value="Actualizar Pedido" class="btn-secondary">
                     </td>
                 </tr>
 
@@ -190,7 +190,7 @@
                 if($res2==true)
                 {
                     //Actualizar
-                    $_SESSION['update'] = "<div class='success'>Pedido Realizado Correctamente</div>";
+                    $_SESSION['update'] = "<div class='success'>Pedido Actualizado Correctamente</div>";
                     header('location:'.SITEURL.'admin/manage-order.php');
                 }
                 else

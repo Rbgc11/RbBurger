@@ -11,7 +11,7 @@
 
                 //Mostramos Todas las Categorías que estén activas
                 //Sentecia SQL
-                $sql = "SELECT * FROM tbl_category WHERE active='Yes'";
+                $sql = "SELECT * FROM tbl_category WHERE active='Si'";
 
                 //Ejecutamos la Sentencia
                 $res = mysqli_query($conn, $sql);

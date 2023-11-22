@@ -61,7 +61,7 @@
                             <?php
                                 //Creamos un código PHP para mostrar las categorías desde la base de datos
                                 //1. Creamos un SQL para obtener todas las categorías activadas desde la base de datos
-                                $sql = "SELECT * FROM tbl_category WHERE active='Yes'";
+                                $sql = "SELECT * FROM tbl_category WHERE active='Si'";
 
                                 //Ejecutamos la Sentencia
                                 $res = mysqli_query($conn, $sql);
@@ -102,7 +102,7 @@
                 <tr>
                     <td>Destacado: </td>
                     <td>
-                        <input type="radio" name="featured" value="Yes"> Sí
+                        <input type="radio" name="featured" value="Si"> Sí
                         <input type="radio" name="featured" value="No"> No
                     </td>
                 </tr>
@@ -110,7 +110,7 @@
                 <tr>
                     <td>Activo: </td>
                     <td>
-                        <input type="radio" name="active" value="Yes"> Sí
+                        <input type="radio" name="active" value="Si"> Sí
                         <input type="radio" name="active" value="No"> No
                     </td>
                 </tr>
@@ -137,6 +137,7 @@
                 $description = $_POST['description'];
                 $price = $_POST['price'];
                 $category = $_POST['category'];
+                $category_title = $_POST['category'];
 
 
                 //Para el tipo de Radio, debemos verificar si el botón es seleccionado o no
@@ -217,6 +218,7 @@
                     price= $price,
                     image_name= '$image_name',
                     category_id= $category,
+                    category_title= $category,
                     featured= '$featured',
                     active= '$active'
             ";

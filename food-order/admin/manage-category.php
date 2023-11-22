@@ -2,7 +2,7 @@
 
 <div class="main-content">
     <div class="wrapper">
-        <h1>Admisnitración Categoría</h1>
+        <h1>Administración Categoría</h1>
 
         <br /><br />
         <?php 

@@ -27,7 +27,7 @@
 
             <?php 
                 //Creamos una sentencia para mostrar las categorías de la base de datos 
-                $sql = "SELECT * FROM tbl_category WHERE active='Yes' AND featured='Yes' LIMIT 6";
+                $sql = "SELECT * FROM tbl_category WHERE active='Si' AND featured='Si' LIMIT 6";
                 //Ejecutamos la Sentencia
                 $res = mysqli_query($conn, $sql);
                 //Contamos filas para verificar si la categoría está disponible o no
@@ -86,7 +86,7 @@
             <?php 
                 //Obtenemos los Alimentos de la base de datos que están activos y destacados
                 //Sentencia SQL
-                $sql2 = "SELECT * FROM tbl_food WHERE active='Yes' AND featured='Yes' LIMIT 6";
+                $sql2 = "SELECT * FROM tbl_food WHERE active='Si' AND featured='Si' LIMIT 6";
 
                 //Ejecutamos la Consulta
                 $res2 = mysqli_query($conn, $sql2);
