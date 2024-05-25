@@ -107,14 +107,14 @@
                     <input type="text" name="card" placeholder="XXXX-XXXX-XXXX-XXXX" maxlength="19" class="input-responsive" required>
 
                     <div class="order-label">Fecha expedición</div>
-                    <input type="date" name="expedition_date" min="2023-09-21" max="2033-12-31" class="input-responsive" required>
+                    <input type="date" name="expedition_date" min="2023-11-22" max="2033-12-31" class="input-responsive" required>
 
                     <div class="order-label">CVV</div>
                     <input type="number" name="cvv" placeholder="XXX"  maxlength="3" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" class="input-responsive" required>
 
-                    <input type="submit" name="submit" value="Confirmar Pedido" class="btn btn-primary">
+                    <input type="submit" name="submit" value="Confirmar Pedido " class=" js-button btn btn-primary">
 
-                    <button type="button" class="js-button  btn btn-secondary ">Guardar Datos</button>
+                   <!-- <button type="button" class="  btn btn-secondary ">Guardar Datos</button> -->
 
                 </fieldset>
 

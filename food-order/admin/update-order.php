@@ -78,9 +78,9 @@
                     <td >Estado: </td>
                     <td>
                         <select name="status">
-                            <option <?php if($status=="Pedido"){echo "selected";} ?> value="Pedido">Pedido</option>
-                            <option <?php if($status=="En entrega"){echo "selected";} ?> value="En entrega">En entrega</option>
-                            <option <?php if($status=="Entregado"){echo "selected";} ?> value="Entregado">Entregado</option>
+                            <option <?php if($status=="Pedido"){echo "selected";} ?> value="Pedido">⏰Pedido</option>
+                            <option <?php if($status=="En entrega"){echo "selected";} ?> value="En entrega">📦En entrega</option>
+                            <option <?php if($status=="Entregado"){echo "selected";} ?> value="Entregado">👍Entregado</option>
                             <option <?php if($status=="Cancelado"){echo "selected";} ?> value="Cancelado">Cancelado</option>
                         </select>
                     </td>

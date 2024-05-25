@@ -8,7 +8,7 @@
 
     <body>
         <div class="login">
-            <h1 class="text-center">Login</h1>
+            <h1 class="text-center">Inicio</h1>
 
             <?php 
                 if(isset($_SESSION['login']))
@@ -33,7 +33,8 @@
                 Contraseña: <br>
                 <input type="password" name="password" placeholder="Escribe la Contraseña"> <br><br>    
 
-                <input type="submit" name="submit" value="Login" class="btn-primary">
+                <input type="submit" name="submit" value="Entrar" class="btn-primary">
+
                 <br><br>
             </form>
             <!-- El login termina aquí -->

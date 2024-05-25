@@ -6,6 +6,13 @@
 
         <br><br>
 
+        <?php
+            if(isset($_GET['id']))
+            {
+                $id=$_GET['id'];
+            }
+        ?>
+
         <?php 
             //1. Conseguimos el ID del Administrador Seleccionado
             $id=$_GET['id'];
@@ -55,6 +62,28 @@
                     </td>
                 </tr>
 
+
+                <tr>
+                    <td>Contraseña Actual: </td>
+                    <td>
+                        <input type="password" name="current_password" placeholder="Contraseña Actual">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Contraseña Nueva: </td>
+                    <td>
+                        <input type="password" name="new_password"placeholder="Contraseña Nueva">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Confirmar Contraseña: </td>
+                    <td>
+                        <input type="password" name="confirm_password" placeholder="Confirmar Contraseña">
+                    </td>
+                </tr>
+
                 <tr>
                     <td colspan="2">
                         <input type="hidden" name="id" value="<?php echo $id; ?>">
@@ -64,6 +93,10 @@
 
             </table>
         </form>
+
+        
+              
+
     </div>
 </div>
 
@@ -77,12 +110,15 @@
         $id = $_POST['id'];
         $full_name = $_POST['full_name'];
         $username = $_POST['username'];
+        $current_password = md5($_POST['current_password']);
+        $new_password = md5($_POST['new_password']);
+        $confirm_password = md5($_POST['confirm_password']);
 
         //Creamos una sentencia para actualizar el administrador
         $sql = "UPDATE tbl_admin SET
         full_name = '$full_name',
         username = '$username' 
-        WHERE id='$id'
+        WHERE id='$id' 
         ";
 
         //Ejecutamos la sentencia
@@ -103,6 +139,71 @@
             //Redirigimos a la pagina de Administración
             header('location:'.SITEURL.'admin/manage-admin.php');
         }
+
+                //2. Verificamos si el usuario con el ID y la Contraseña actual si existe o no
+                $sql2 = "SELECT * FROM tbl_admin WHERE id=$id AND password='$current_password'";
+
+                //Ejecutamos la Sentencia
+                $res2 = mysqli_query($conn,$sql2);
+        
+                if($res2 == true)
+                {
+                    //Verificamos si los datos están disponibles o no
+                    $count=mysqli_num_rows($res2);
+        
+                    if($count==1)
+                    {
+                        //Usuario Existe y la Contraseña puede ser Cambiada
+                        //echo "Usuario Encontrado";
+        
+                        //Verificamos si la nueva contraseña y la contraseña confirmada coinciden o no
+                        if($new_password==$confirm_password)
+                        {
+                            //Actualizamos la Contraseña
+                            //echo "Coincide la Contraseña";
+                            $sql3 = "UPDATE tbl_admin SET
+                                password='$new_password'
+                                WHERE id=$id
+                                ";
+        
+                            //Ejecutamos la Sentencia
+                            $res3 = mysqli_query($conn, $sql3);
+        
+                            //Verificamos si la consulta se ejecutó o no
+                            if($res3==true)
+                            {
+                                //Mostramos el mensaje exitoso
+                                //Redirigimos al Panel de Administrador con Mensaje de Éxito
+                                $_SESSION['change-pwd'] = "<div class='success'> </div>";
+                                //Redirigimos el Usuario
+                                header("location:".SITEURL.'admin/manage-admin.php');
+                            }
+                            else
+                            {
+                                //Mostramos el mensaje de Error
+                                //Redirigimos al Panel de Administrador con Mensaje de Error
+                                $_SESSION['change-pwd'] = "<div class='success'> </div>";
+                                //Redirigimos el Usuario
+                                header("location:".SITEURL.'admin/manage-admin.php');
+        
+                            }
+                        }
+                        else
+                        {
+                            //Redirigimos al Panel de Administrador con Mensaje de Error
+                            $_SESSION['pwd-not-match'] = "<div class='error'>No Coincide la Contraseña. </div>";
+                            //Redirigimos el Usuario
+                            header("location:".SITEURL.'admin/manage-admin.php');
+                        }
+                    }
+                    else
+                    {
+                        //El Usuario no Existe y es redirigido
+                        $_SESSION['user-not-found'] = "<div class='error'> </div>";
+                        //Redirigimos el Usuario
+                        header("location:".SITEURL.'admin/manage-admin.php');
+                    }
+                }
     }
     
 

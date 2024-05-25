@@ -85,6 +85,10 @@ table tr td{
     background-color: #ff4757;
 }
 
+select#status option[value="Pedido"]   { background-image:url(images/reloj.jpg);   }
+select#status option[value="female"] { background-image:url(female.png); }
+select#stauts option[value="others"] { background-image:url(others.png); }
+
 .success{
     color: #2ed573;
 }
@@ -116,13 +120,13 @@ table tr td{
 
 /*CSS para el main-content */
 .main-content{
-    background-color: #f1f2f6;
+    background-color: white;
     padding: 3% 0;
 }
 
 .col-4{
     width: 18%;
-    background-color: white;
+    background-color: #f1f2f6;
     margin: 1%;
     padding: 2%;
     float: left; /*^para que estén horizontalmente las cajas */

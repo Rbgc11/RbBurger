@@ -3,20 +3,14 @@
         <div class="container text-center">
             <ul>
                 <li>
-                    <a href="https://www.facebook.com/"><img src="https://img.icons8.com/fluent/30/000000/facebook-new.png"/>RBURGER</a>
+                    <a href="https://www.facebook.com/"><img src="https://img.icons8.com/external-justicon-flat-justicon/30/external-facebook-social-media-justicon-flat-justicon.png"/></a>
                 </li>
                 <li>
-                    <a href="https://www.instagram.com/"><img src="https://img.icons8.com/fluent/30/000000/instagram-new.png"/>RBURGER</a>
+                    <a href="https://www.instagram.com/"><img src="https://img.icons8.com/external-justicon-flat-justicon/30/external-instagram-social-media-justicon-flat-justicon.png"/></a>
 
                 </li>
                 <li>
-                    <a href="https://twitter.com/"><img src="https://img.icons8.com/fluent/30/000000/twitter.png"/>RBURGER</a>
-                </li>
-                <li>
-                    <a href="https://mail.google.com/"><img src="https://img.icons8.com/nolan/30/gmail.png"/>RbBurger@gmail.com</a>
-                </li>
-                <li>
-                    <a><img src="https://img.icons8.com/ios-filled/30/ringer-volume.png" alt="ringer-volume"/>+654803943</a>
+                    <a href="https://twitter.com/"><img src="https://img.icons8.com/external-justicon-flat-justicon/30/external-twitter-social-media-justicon-flat-justicon.png"/></a>
                 </li>
             </ul>
         </div>

@@ -11,6 +11,7 @@
 
         </div>
     </section>
+    
     <?php 
             if(isset($_SESSION['add']))  //Verificamos si la sesion esta configurada o no
             {
@@ -18,16 +19,39 @@
                 unset($_SESSION['add']); //Eliminar el mensaje del sistema 
             }
         ?>
+    <!-- ESTE PHP NO ES VALIDO
     <?php
     
+    
+    if(isset($_POST['add_to_cart'])){
 
-?>
+        $product_name = $_POST['product_name'];
+        $product_price = $_POST['product_price'];
+        $product_image = $_POST['product_image'];
+        $product_quantity = 1;
+     
+        $select_cart = mysqli_query($conn, "SELECT * FROM `tbl_cart` WHERE name = '$product_name'");
+     
+        if(mysqli_num_rows($select_cart) > 0){
+           $message[] = 'product already added to cart';
+        }else{
+           $insert_product = mysqli_query($conn, "INSERT INTO `tbl_cart`(name, price, image, quantity) VALUES('$product_name', '$product_price', '$product_image', '$product_quantity')");
+           $message[] = 'product added to cart succesfully';
+        }
+     
+     }
+
+?>-->
     <!-- Sección lista alimentos -->
     <section class="food-menu">
         <div class="container">
             <h2 class="text-center">Lista de Alimentos</h2>
 
             <?php
+                  $select_products = mysqli_query($conn, "SELECT * FROM `tbl_food`");
+                  if(mysqli_num_rows($select_products) > 0){
+                     while($fetch_product = mysqli_fetch_assoc($select_products)){
+
                 //Mostramos los alimentos que están activos
                 $sql ="SELECT * FROM tbl_food WHERE active='Si'";
 
@@ -50,6 +74,7 @@
                         $description = $row['description'];
                         $image_name = $row['image_name'];
                         ?>
+                        
                         <div class="food-menu-box"  method="POST">
                             <div class="food-menu-img">
                                 <?php
@@ -63,25 +88,54 @@
                                     {
                                         //Imagen disponible
                                         ?>
-                                       <a  href="images/food/<?php echo $image_name; ?>"><img src="<?php echo SITEURL; ?>images/food/<?php echo $image_name; ?>"  alt="Chicke Hawain Pizza" class="img-responsive img-curve"></a>
+                                       <a name="product_image" href="images/food/<?php echo $image_name; ?>"><img src="<?php echo SITEURL; ?>images/food/<?php echo $image_name; ?>"  alt="Chicke Hawain Pizza" class="img-responsive img-curve"></a>
                                         <?php
                                     }
                                 ?>
                             </div>
 
                             <div  class="food-menu-desc">
-                                <h4 ><?php echo $title; ?></h4>
-                                <p class="food-price"><?php echo $price; ?>€</p>
+                                <h4 name="product_name" ><?php echo $title; ?></h4>
+                                <p name="product_price" class="food-price"><?php echo $price; ?>€</p>
                                 <p class="food-detail">
                                     <?php echo $description; ?>
                                 </p>
                                 <br>
 
-                                <a href="<?php echo SITEURL; ?>order.php?food_id=<?php echo $id; ?>" class="btn btn-primary">Pedir Ahora</a>
-                                <a href="<?php echo SITEURL; ?>cart.php?food_id=<?php echo $id; ?>" class="btn btn-primary">Carrito</a>
+                                <a href="<?php echo SITEURL; ?>order.php?food_id=<?php echo $id; ?>" class="btn btn-primary">Pedir Solo</a>
+                               <!--<input type="submit" id="button" onclick ="addToCart()" class="btn" value="Añadir Carrito" name="add_to_cart"> -->
+                                <button id="btnAdd" onclick ="addToCart()" >Agregar al carrito</button> 
+
+                                
+                                <!-- Implementación AJAX para incluir productos -->
+                                <script>
+                                $(document).ready(function(){
+                                    $("#button").click(function(){
+                                        var quantity=$("#quantity").val();
+                                        var id_food=$("#id_food").val();
+                                        var id_order=$("#id_order").val();
+                                        $.ajax({
+                                            url:'insert.php',
+                                            method:'POST',
+                                            data:{
+                                                quantity:quantity,
+                                                id_food:id_food,
+                                                id_order:id_order
+                                            },
+                                        success:function(data){
+                                            alert(data);
+                                        }
+                                        });
+                                    });
+                                });
+                                </script>
 
                             </div>
                         </div>
+                        <?php
+         };
+      };
+      ?>
                         <?php
                     }
                 }
@@ -90,6 +144,7 @@
                     //Comida No Disponible
                     echo "<div class='error'>Alimento No Encontrado.</div>";
                 }
+                
             ?>
 
 
@@ -126,10 +181,9 @@
        //2. SQL Query guarda los datos en la base de datos
        //el id no se recoge ya que esta en auto incremento, por lo que solo se pasa nombre completo, usuario y contraseña
        $sql = "INSERT INTO tbl_cart SET 
-            tilte='$tilte',
-            description='$description',
+            name='$name',
             price='$price',
-            image_name='$image_name',
+            image_name='$image',
             food_id = '$food_id'
        ";
 
@@ -163,3 +217,6 @@
 
 
 ?>
+
+<script src="script2.js"></script>
+

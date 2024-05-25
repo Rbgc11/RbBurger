@@ -70,7 +70,7 @@
                     </tr>
                     <?php
                         //Consultamos para obtener todas las comidas  de la base de datos
-                        $sql= "SELECT * FROM tbl_food ORDER BY category_id ASC" ;
+                        $sql= "SELECT * FROM tbl_food   ORDER BY category_id ASC" ;
 
                         //Ejecutamos la sentencia
                         $res = mysqli_query($conn, $sql);
@@ -121,6 +121,7 @@
                                                 }
                                             ?>
                                         </td>
+                                        
                                         <td><?php echo $category_id; ?></td>
                                         <td><?php echo $featured; ?></td>
                                         <td><?php echo $active; ?></td>

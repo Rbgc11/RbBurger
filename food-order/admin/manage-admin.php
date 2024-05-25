@@ -96,7 +96,7 @@
                                             <td><?php echo $full_name; ?></td>
                                             <td><?php echo $username; ?></td>
                                             <td>
-                                                <a href="<?php echo SITEURL;?>admin/update-password.php?id=<?php echo $id; ?>"  class="btn-primary"><img src="https://img.icons8.com/ios-filled/30/change.png"/>Contraseña</a>
+                                               <!-- <a href="<?php echo SITEURL;?>admin/update-password.php?id=<?php echo $id; ?>"  class="btn-primary"><img src="https://img.icons8.com/ios-filled/30/change.png"/>Contraseña</a> -->
                                                 <a href="<?php echo SITEURL;?>admin/update-admin.php?id=<?php echo $id; ?>" class="btn-secondary"> <img src="https://img.icons8.com/pastel-glyph/30/loop.png"/></a>
                                                 <a href="<?php echo SITEURL;?>admin/delete-admin.php?id=<?php echo $id; ?>" class="btn-danger"> <img src="https://img.icons8.com/ios-glyphs/30/filled-trash.png"/></a>
                                             </td>
