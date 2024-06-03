@@ -69,7 +69,7 @@
                 }
                 else
                 {
-                    //Categoría No Dispononible
+                    //Categoría No Disponible
                     echo "<div class='error'>Categoría No Agregada.</div>";
                 }
             ?>
@@ -134,8 +134,6 @@
                                     <?php echo $description; ?>
                                 </p>
                                 <br>
-
-                                <a href="<?php echo SITEURL; ?>order.php?food_id=<?php echo $id; ?>" class="btn btn-primary">Pedir ahora</a>
                             </div>
                         </div>
                         <?php

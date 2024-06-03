@@ -11,7 +11,6 @@
             if(isset($_GET['id']))
             {
                 //Conseguiomos el ID y todos los demás detalles
-                //echo "Conseguimos los Datos";
                 $id=$_GET['id'];
 
                 //Creamos una consulta SQL para obtener todos los demás detalles

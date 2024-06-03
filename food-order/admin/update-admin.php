@@ -37,6 +37,7 @@
 
                     $full_name = $row['full_name'];
                     $username = $row['username']; 
+                    $email = $row['email']; 
                 }
                 else 
                 {
@@ -58,7 +59,7 @@
                 <tr>
                     <td>Usuario: </td>
                     <td>
-                        <input type="text" name="username" value="<?php echo $username ; ?>">
+                        <input type="text" name="username" value="<?php echo $username; ?>">
                     </td>
                 </tr>
 
@@ -81,6 +82,13 @@
                     <td>Confirmar Contraseña: </td>
                     <td>
                         <input type="password" name="confirm_password" placeholder="Confirmar Contraseña">
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>Email: </td>
+                    <td>
+                        <input type="text" name="email" value="<?php echo $email; ?>">
                     </td>
                 </tr>
 
@@ -112,12 +120,14 @@
         $username = $_POST['username'];
         $current_password = md5($_POST['current_password']);
         $new_password = md5($_POST['new_password']);
+        $email = $_POST['email'];
         $confirm_password = md5($_POST['confirm_password']);
 
         //Creamos una sentencia para actualizar el administrador
         $sql = "UPDATE tbl_admin SET
         full_name = '$full_name',
-        username = '$username' 
+        username = '$username', 
+        email = '$email' 
         WHERE id='$id' 
         ";
 

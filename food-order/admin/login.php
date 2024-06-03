@@ -25,7 +25,7 @@
             ?>
             <br><br>
 
-            <!-- El login empieza aquí -->
+            <!-- El login empieza aquí con la creación del formulario-->
             <form action="" method="POST" class="text-center">
                 Usuario: <br>
                 <input type="text" name="username" placeholder="Escribe el Usuario"><br><br>
@@ -34,6 +34,10 @@
                 <input type="password" name="password" placeholder="Escribe la Contraseña"> <br><br>    
 
                 <input type="submit" name="submit" value="Entrar" class="btn-primary">
+
+                <br> <br>
+                <a class="btn-secondary" href="forgot.php">Recordar Contraseña</a>  
+
 
                 <br><br>
             </form>
@@ -52,8 +56,7 @@
     {
         //Proceso para el Login
         //1. Conseguimos los Datos del Formulario del Login
-        //$username = $_POST['username'];
-        //$password = md5($_POST['password']);
+
 
         $username = mysqli_real_escape_string($conn, $_POST['username']);
         

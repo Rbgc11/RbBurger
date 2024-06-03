@@ -35,6 +35,13 @@
                 </tr>
 
                 <tr>
+                    <td>Email: </td>
+                    <td>
+                        <input type="text" name="email" placeholder="Escribe tu correo">
+                    </td>
+                </tr>
+
+                <tr>
                     <td colsplan="2">
                         <input type="submit" name="submit" value="Añadir Administrador" class="btn-secondary">
                     </td>
@@ -55,19 +62,20 @@
     if(isset($_POST['submit']))    //Asi se verifica si pasa por el metodo de publicacion o no
     {
         // El botón se pulsa
-       // echo "Botón Pulsado";
 
        //1. Obtenemos los datos del formulario
        $full_name = $_POST['full_name'];
        $username = $_POST['username'];
        $password = md5($_POST['password']); //Contrasea cifrada con "md5"
+       $email = $_POST['email'];
 
        //2. SQL Query guarda los datos en la base de datos
        //el id no se recoge ya que esta en auto incremento, por lo que solo se pasa nombre completo, usuario y contraseña
        $sql = "INSERT INTO tbl_admin SET 
             full_name='$full_name',
             username='$username',
-            password='$password'
+            password='$password',
+            email='$email'
        ";
 
        //3. Ejecutaremos Query y se guarda los datos en la base de datos
@@ -77,7 +85,6 @@
        if($res==TRUE)
        {
             //Dato introducido
-            //echo "Datos Introducidos";
             //Creamos una variable para mostrar el mensaje 
             $_SESSION['add'] = "<div class='success'>Administrador Agregado Correctamente</div>";
             //Redirigimos a la pagina de Administración de Administración
@@ -88,7 +95,6 @@
        else
        {
             //No se pueden insertar los datos
-            //echo "Error al Insertar Datos";
             //Creamos una variable para mostrar el mensaje 
             $_SESSION['add'] = "<div class='error'>Error al Añadir Administrador</div>";
             //Redirigimos a la pagina de Añadir Administración

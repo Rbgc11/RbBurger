@@ -24,7 +24,6 @@
             $price = $row2['price'];
             $current_image = $row2['image_name'];
             $current_category = $row2['category_id'];
-            $current_category = $row2['category_title'];
             $featured = $row2['featured'];
             $active = $row2['active']; 
     }
@@ -252,7 +251,6 @@
                     price = $price,
                     image_name = '$image_name', 
                     category_id = '$category',
-                    category_title = '$category',
                     featured = '$featured',
                     active = '$active'
                     WHERE id='$id'

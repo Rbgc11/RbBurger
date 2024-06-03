@@ -19,29 +19,7 @@
                 unset($_SESSION['add']); //Eliminar el mensaje del sistema 
             }
         ?>
-    <!-- ESTE PHP NO ES VALIDO
-    <?php
-    
-    
-    if(isset($_POST['add_to_cart'])){
 
-        $product_name = $_POST['product_name'];
-        $product_price = $_POST['product_price'];
-        $product_image = $_POST['product_image'];
-        $product_quantity = 1;
-     
-        $select_cart = mysqli_query($conn, "SELECT * FROM `tbl_cart` WHERE name = '$product_name'");
-     
-        if(mysqli_num_rows($select_cart) > 0){
-           $message[] = 'product already added to cart';
-        }else{
-           $insert_product = mysqli_query($conn, "INSERT INTO `tbl_cart`(name, price, image, quantity) VALUES('$product_name', '$product_price', '$product_image', '$product_quantity')");
-           $message[] = 'product added to cart succesfully';
-        }
-     
-     }
-
-?>-->
     <!-- Sección lista alimentos -->
     <section class="food-menu">
         <div class="container">
@@ -102,34 +80,6 @@
                                 </p>
                                 <br>
 
-                                <a href="<?php echo SITEURL; ?>order.php?food_id=<?php echo $id; ?>" class="btn btn-primary">Pedir Solo</a>
-                               <!--<input type="submit" id="button" onclick ="addToCart()" class="btn" value="Añadir Carrito" name="add_to_cart"> -->
-                                <button id="btnAdd" onclick ="addToCart()" >Agregar al carrito</button> 
-
-                                
-                                <!-- Implementación AJAX para incluir productos -->
-                                <script>
-                                $(document).ready(function(){
-                                    $("#button").click(function(){
-                                        var quantity=$("#quantity").val();
-                                        var id_food=$("#id_food").val();
-                                        var id_order=$("#id_order").val();
-                                        $.ajax({
-                                            url:'insert.php',
-                                            method:'POST',
-                                            data:{
-                                                quantity:quantity,
-                                                id_food:id_food,
-                                                id_order:id_order
-                                            },
-                                        success:function(data){
-                                            alert(data);
-                                        }
-                                        });
-                                    });
-                                });
-                                </script>
-
                             </div>
                         </div>
                         <?php
@@ -169,8 +119,6 @@
 
     if(isset($_POST['submit']))    //Asi se verifica si pasa por el metodo de publicacion o no
     {
-        // El botón se pulsa
-       // echo "Botón Pulsado";
 
        //1. Obtenemos los datos del formulario
        $title = $_POST['title'];
@@ -205,7 +153,6 @@
        else
        {
             //No se pueden insertar los datos
-            //echo "Error al Insertar Datos";
             //Creamos una variable para mostrar el mensaje 
             $_SESSION['add'] = "<div class='error'>Error al Añadir Administrador</div>";
             //Redirigimos a la pagina de Añadir Administración
@@ -217,6 +164,4 @@
 
 
 ?>
-
-<script src="script2.js"></script>
 

@@ -2,12 +2,10 @@
     //Incluimos constantes.php 
     include('../config/constants.php');
 
-    //echo "Eliminar Categoría";
     //Verificamos si el valor el id y image_name está configurado o no
     if(isset($_GET['id']) AND isset($_GET['image_name']))
     {
         //Obtenemos los valores y eliminamos
-        //echo "Obtiene los valores y Elimina";
         $id = $_GET['id'];
         $image_name = $_GET['image_name'];
 

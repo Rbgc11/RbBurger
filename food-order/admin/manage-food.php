@@ -63,7 +63,6 @@
                         <th>Titulo</th>
                         <th>Precio</th>
                         <th>Imagen</th>
-                        <th>Categoria</th>
                         <th>Destacado</th> 
                         <th>Activo</th> 
                         <th>Acciones</th> 
@@ -92,7 +91,6 @@
                                 $title = $row['title'];
                                 $price = $row['price'];
                                 $image_name = $row['image_name'];
-                                $category_id = $row['category_id'];
                                 $featured = $row['featured'];
                                 $active = $row['active'];
 
@@ -122,7 +120,6 @@
                                             ?>
                                         </td>
                                         
-                                        <td><?php echo $category_id; ?></td>
                                         <td><?php echo $featured; ?></td>
                                         <td><?php echo $active; ?></td>
                                         <td>

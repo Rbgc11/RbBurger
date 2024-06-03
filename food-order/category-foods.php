@@ -87,6 +87,7 @@
                                 
                             </div>
 
+                            <!-- Muestro los datos en la web -->
                             <div class="food-menu-desc">
                                 <h4><?php echo $title; ?></h4>
                                 <p class="food-price"><?php echo $price; ?>€</p>
@@ -95,8 +96,6 @@
                                 </p>
 
                                 <br>
-
-                                <a href="<?php echo SITEURL; ?>order.php?food_id=<?php echo $id; ?>" class="btn btn-primary">Pedir ahora</a>
                             </div>
                         </div>
                         

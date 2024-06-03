@@ -2,7 +2,7 @@
 
 <div class="main-content">
     <div class="wrapper">
-        <h1>Actualizar Pedido</h1>
+        <h1>Actualizar Aviso</h1>
         <br><br>
 
         <?php 
@@ -10,12 +10,12 @@
             //Verificamos si el id está configurado o no
             if(isset($_GET['id']))
             {
-                //Obtenemos los detalles del pedido
+                //Obtenemos los detalles del aviso
                 $id=$_GET['id'];
                 
                 //Obtenemos todos los otros detalles basados en este id
                 //Sentencia SQL para obtener los otros detalles
-                $sql = "SELECT * FROM tbl_order WHERE id=$id";
+                $sql = "SELECT * FROM tbl_aviso WHERE id=$id";
                 //Ejecutamos la Sentencia
                 $res = mysqli_query($conn, $sql);
                 //Contamos Filas
@@ -26,29 +26,20 @@
                     //Detalles Disponibles
                     $row=mysqli_fetch_assoc($res);
 
-                    $food_title = $row['food_title'];
-                    $price = $row['price'];
-                    $qty = $row['qty'];
+                    $num_mesa = $row['num_mesa'];
                     $status = $row['status'];
-                    $customer_name = $row['customer_name'];
-                    $customer_contact = $row['customer_contact'];
-                    $customer_email = $row['customer_email'];
-                    $customer_address = $row['customer_address'];
-                    $card = $row['card'];
-                    $expedition_date = $row['expedition_date'];
-                    $cvv = $row['cvv'];
                 
                 }
                 else
                 {
                     //Detalles No Disponibles
-                    //Redirigimos a la Administración de Pedidos
+                    //Redirigimos a la Administración de Avisos
                     header('location:'.SITEURL.'admin/manage-order.php');
                 }
             }
             else
             {
-                //Redirigimos a la administración de pedidos
+                //Redirigimos a la administración de avisos
                 header('location:'.SITEURL.'admin/manage-order.php');
             }
 
@@ -56,91 +47,31 @@
         <form action="" method="POST">
             <table class="tbl-30">
                 <tr>
-                    <td>Nombre Comida</td>
-                    <td><b><?php echo $food_title; ?></b></td>
-                </tr>
-
-                <tr>
-                    <td>Precio: </td>
+                    <td>Nº Mesa</td>
                     <td>
-                        <b><?php echo $price; ?> €</b>
-                    </td>
-                </tr> 
-
-                <tr>
-                    <td>Cantidad: </td>
-                    <td>
-                        <input type="number" name="qty" value="<?php echo $qty; ?>">
+                    <br><input type="text" name="num_mesa" value="<?php echo $num_mesa; ?>"></br>
                     </td>
                 </tr>
+
 
                 <tr>
                     <td >Estado: </td>
                     <td>
                         <select name="status">
-                            <option <?php if($status=="Pedido"){echo "selected";} ?> value="Pedido">⏰Pedido</option>
-                            <option <?php if($status=="En entrega"){echo "selected";} ?> value="En entrega">📦En entrega</option>
-                            <option <?php if($status=="Entregado"){echo "selected";} ?> value="Entregado">👍Entregado</option>
+                            <option <?php if($status=="Ir a la Mesa"){echo "selected";} ?> value="Ir a la mesa">Ir a la mesa</option>
+                            <option <?php if($status=="Llevar la Cuenta"){echo "selected";} ?> value="Llevar la Cuenta">Llevar la Cuenta</option>
+                            <option <?php if($status=="Pagado"){echo "selected";} ?> value="Pagado">Pagado</option>
                             <option <?php if($status=="Cancelado"){echo "selected";} ?> value="Cancelado">Cancelado</option>
                         </select>
                     </td>
                 </tr>
 
-                <tr>
-                    <td>Nombre Cliente: </td>
-                    <td>
-                        <input type="text" name="customer_name" value="<?php echo $customer_name; ?>">
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td>Contacto Cliente: </td>
-                    <td>
-                        <input type="text" name="customer_contact" value="<?php echo $customer_contact; ?>">
-                    </td>
-                </tr> 
-                
-                <tr>
-                    <td>Email Cliente: </td>
-                    <td>
-                        <input type="text" name="customer_email" value="<?php echo $customer_email; ?>">
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td>Dirección Cliente: </td>
-                    <td>
-                        <input type="text" name="customer_address" value="<?php echo $customer_address; ?>">
-                    </td>
-                </tr> 
-
-                <tr>
-                    <td>Número Tarjeta: </td>
-                    <td>
-                        <input type="text" name="card" value="<?php echo $card; ?>">
-                    </td>
-                </tr> 
-                
-                <tr>
-                    <td>Fecha Expedición</td>
-                    <td>
-                        <input type="date" name="expedition_date" min="2023-09-21" max="2033-12-31" value="<?php echo $expedition_date; ?>">
-                    </td>
-                </tr>
-                
-                <tr>
-                    <td>CVV: </td>
-                    <td>
-                    <input type="text" name="cvv" minlength="3" value="<?php echo $cvv; ?>">
-                    </td>
-                </tr> 
                 
                 <tr>
                     <td colspan="2">
                         <input type="hidden" name="id" value="<?php echo $id; ?>">
-                        <input type="hidden" name="price" value="<?php echo $price; ?>">
                         
-                        <input type="submit" name="submit" value="Actualizar Pedido" class="btn-secondary">
+                        <input type="submit" name="submit" value="Actualizar Aviso" class="btn-secondary">
                     </td>
                 </tr>
 
@@ -154,49 +85,31 @@
                 //echo "Pulsado";
                 //Obtenemos los valores del formulario
                 $id = $_POST['id'];
-                $price = $_POST['price'];
-                $qty = $_POST['qty'];
-
-                $total = $price * $qty;
-
+                $num_mesa = $_POST['num_mesa'];
                 $status = $_POST['status'];
-                $customer_name = $_POST['customer_name'];
-                $customer_contact = $_POST['customer_contact'];
-                $customer_email = $_POST['customer_email'];
-                $customer_address = $_POST['customer_address'];
-                $card = $_POST['card'];
-                $expedition_date = $_POST['expedition_date'];
-                $cvv = $_POST['cvv'];
+    
                 
                 //Actualizamos los valores
-                $sql2 = "UPDATE tbl_order SET
-                    qty = $qty,
-                    total = $total,
-                    status = '$status',
-                    customer_name = '$customer_name',
-                    customer_contact = '$customer_contact',
-                    customer_email = '$customer_email',
-                    customer_address = '$customer_address',
-                    card = '$card',
-                    expedition_date = '$expedition_date',
-                    cvv = '$cvv'    
+                $sql2 = "UPDATE tbl_aviso SET
+                    num_mesa = '$num_mesa',
+                    status = '$status'
                     WHERE id=$id
                 ";
                 //Ejecutamos la sentencia
                 $res2 = mysqli_query($conn, $sql2);
 
                 //Verificamos si se actualizo o no
-                //Redirigimos a Administración Pedido con mensaje
+                //Redirigimos a Administración Aviso con mensaje
                 if($res2==true)
                 {
                     //Actualizar
-                    $_SESSION['update'] = "<div class='success'>Pedido Actualizado Correctamente</div>";
+                    $_SESSION['update'] = "<div class='success'>Aviso Actualizado Correctamente</div>";
                     header('location:'.SITEURL.'admin/manage-order.php');
                 }
                 else
                 {
                     //Error al actualizar
-                    $_SESSION['update'] = "<div class='error'>Error al Realizar el Pedido</div>";
+                    $_SESSION['update'] = "<div class='error'>Error al Realizar el Aviso</div>";
                     header('location:'.SITEURL.'admin/manage-order.php');
                 }
             }

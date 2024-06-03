@@ -1,7 +1,5 @@
 <?php  include('partials/menu.php'); ?>
 
-
-        <!-- Main Content Section Starts -->
         <div class="main-content">
             <div class="wrapper">
                 <h1>Administración</h1>
@@ -47,7 +45,7 @@
                 ?>
                 <br><br><br>
 
-                <!-- Button para añadir un administador-->
+                <!-- Botón para añadir un administador-->
                 <a href="add-admin.php" class="btn-primary">Crear Administrador</a> 
 
                 <br /><br /><br />
@@ -57,6 +55,7 @@
                         <th>S.N.</th>
                         <th>Nombre Completo</th>
                         <th>Usuario</th>
+                        <th>Email</th> 
                         <th>Acciones</th>
                     </tr>
 
@@ -87,6 +86,7 @@
                                     $id=$rows['id'];
                                     $full_name=$rows['full_name'];
                                     $username=$rows['username'];
+                                    $email=$rows['email'];
                                     //No se hace la contraseña ya que es un valor cifrado y no se ha de mostrar
 
                                     //Mostramos los valores en nuestra tabla
@@ -95,8 +95,8 @@
                                             <td><?php echo $sn++;  ?>.</td>  <!-- Esto se hace para que cada vez que se elimine un administrador su id se cambie correctamente, siendo seguido-->
                                             <td><?php echo $full_name; ?></td>
                                             <td><?php echo $username; ?></td>
+                                            <td><?php echo $email; ?></td>
                                             <td>
-                                               <!-- <a href="<?php echo SITEURL;?>admin/update-password.php?id=<?php echo $id; ?>"  class="btn-primary"><img src="https://img.icons8.com/ios-filled/30/change.png"/>Contraseña</a> -->
                                                 <a href="<?php echo SITEURL;?>admin/update-admin.php?id=<?php echo $id; ?>" class="btn-secondary"> <img src="https://img.icons8.com/pastel-glyph/30/loop.png"/></a>
                                                 <a href="<?php echo SITEURL;?>admin/delete-admin.php?id=<?php echo $id; ?>" class="btn-danger"> <img src="https://img.icons8.com/ios-glyphs/30/filled-trash.png"/></a>
                                             </td>

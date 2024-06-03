@@ -1,5 +1,4 @@
 <?php include('partials/menu.php') ?>
-        <!-- Main Content Section Starts -->
         <div class="main-content">
             <div class="wrapper">
                 <h1>Panel</h1>
@@ -46,12 +45,12 @@
 
                 <div class="col-4 text-center">
             
-                    Total de Pedidos
+                    Total de Avisos para atender
                     <br><br>
 
                     <?php 
                         //Consulta Query
-                        $sql3="SELECT * FROM tbl_order";
+                        $sql3="SELECT Status FROM tbl_aviso WHERE status='Ir a la mesa'";
                         //Ejecutamos la Sentencia
                         $res3 = mysqli_query($conn, $sql3);
                         //Contamos Filas
@@ -63,31 +62,26 @@
                 </div>
 
                 <div class="col-4 text-center">
-                    Ingresos Generadoss
-                    <br> <br>
+            
+                    Total de Mesas pagadas
+                    <br><br>
 
-                    <?php
-                        //Consulta Query para obtener los ingresos totales generados
-                        //Función Agregada en SQL
-                        $sql4 = "SELECT SUM(total) AS Total FROM tbl_order WHERE status='Entregado'";
-
+                    <?php 
+                        //Consulta Query
+                        $sql3="SELECT Status FROM tbl_aviso WHERE status='Pagado'";
                         //Ejecutamos la Sentencia
-                        $res4 = mysqli_query($conn, $sql4);
-
-                        //Obtenemos los valores
-                        $row4 = mysqli_fetch_assoc($res4);
-
-                        //Obtenemos los ingresos totales
-                        $total_revenue = $row4['Total'];
-
+                        $res3 = mysqli_query($conn, $sql3);
+                        //Contamos Filas
+                        $count3 = mysqli_num_rows($res3);
                     ?>
 
-                    <h1><?php echo $total_revenue; ?>€</h1>
-                </div>
+                    <h1><?php echo $count3; ?></h1>
+
+            </div>
+
 
                 <div class="clearfix"></div>
             </div>
         </div>
-        <!-- Main Content Section Ends --> 
 
 <?php include('partials/footer.php')?>

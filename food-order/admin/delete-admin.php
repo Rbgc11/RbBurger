@@ -16,7 +16,6 @@
     if($res==true)
     {
         //Se ejecuta la consulta correctamente y el administrador se elimina
-        //echo "Administrador Elminado";
         //Creamos una variable de sistema para mostrar un mensaje 
         $_SESSION['delete'] = "<div class='success'>Administrador Elminado.</div>";
         //Redirigir a la página de Administrar Administración
@@ -25,7 +24,6 @@
     else
     {
         //No se ejecuta la consulta correctamente y el administrador no se elimina
-        //echo "Error al Eliminar el Administrador";
 
         $_SESSION['delete'] = "<div class='error'>Error al Eliminar el Administrador. Intentalo de nuevo.</div>";
         header('location:'.SITEURL.'admin/manage-admin.php');

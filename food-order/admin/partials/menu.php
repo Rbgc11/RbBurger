@@ -5,7 +5,7 @@ include('login-check.php');
 
 <html>
     <head>
-        <title>Web Restaurante con Pedidos </title>
+        <title>Web Restaurante </title>
         <link rel="stylesheet" href="../css/admin.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.css">
 
@@ -24,7 +24,7 @@ include('login-check.php');
                     <li><a href="manage-admin.php">Administrador</a></li>
                     <li><a href="manage-category.php">Categorias</a></li>
                     <li><a href="manage-food.php">Comida</a></li>
-                    <li><a href="manage-order.php">Pedido</a></li>
+                    <li><a href="manage-order.php">Avisos</a></li>
                     <li><a href="logout.php">Cerrar Sesión</a></li>
                 </ul>
             </div>

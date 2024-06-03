@@ -136,8 +136,7 @@
                 $title = $_POST['title'];
                 $description = $_POST['description'];
                 $price = $_POST['price'];
-                $category = $_POST['category'];
-                $category_title = $_POST['category'];
+                $category_id = $_POST['category_id'];
 
 
                 //Para el tipo de Radio, debemos verificar si el botón es seleccionado o no
@@ -217,8 +216,7 @@
                     description='$description',
                     price= $price,
                     image_name= '$image_name',
-                    category_id= $category,
-                    category_title= $category,
+                    category= $category,
                     featured= '$featured',
                     active= '$active'
             ";

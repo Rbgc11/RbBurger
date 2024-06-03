@@ -72,8 +72,6 @@
                                     <?php echo $description; ?>
                                 </p>
                                 <br>
-
-                                <a href="<?php echo SITEURL; ?>order.php?food_id=<?php echo $id; ?>" class="btn btn-primary">Pedir Ahora</a>
                             </div>
                         </div>
                         
@@ -100,6 +98,5 @@
         </div>
 
     </section>
-    <!-- fOOD Menu Section Ends Here -->
 
     <?php include('partials-front/footer.php'); ?>

@@ -6,7 +6,6 @@
     if(isset($_GET['id']) AND isset($_GET['image_name']))
     {
         //Obtenemos los valores y eliminamos
-        //echo "Obtiene los valores y Elimina";
         //1.Obtenemos el id el nombre de la imagen
         $id = $_GET['id'];
         $image_name = $_GET['image_name'];

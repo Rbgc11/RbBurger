@@ -21,6 +21,16 @@ Version: 1.0;
     
 }
 
+.container{
+  width:100%;
+  max-width:600px;
+  background-color:#f9f9f9;
+  border:1px solid #ccc;
+  border-radius:5px;
+  padding:16px;
+  margin:0 auto;
+ }
+
 .clearfix{  /*Para bajar el footer*/
     float:none;
     clear: both;
@@ -67,6 +77,8 @@ table tr td{
     color:black;
     text-decoration: none;
     font-weight: bold;
+    margin-top: 30px;
+    height: 30px;
 }
 
 .btn-secondary:hover{
@@ -84,10 +96,6 @@ table tr td{
 .btn-danger:hover{
     background-color: #ff4757;
 }
-
-select#status option[value="Pedido"]   { background-image:url(images/reloj.jpg);   }
-select#status option[value="female"] { background-image:url(female.png); }
-select#stauts option[value="others"] { background-image:url(others.png); }
 
 .success{
     color: #2ed573;
@@ -129,7 +137,7 @@ select#stauts option[value="others"] { background-image:url(others.png); }
     background-color: #f1f2f6;
     margin: 1%;
     padding: 2%;
-    float: left; /*^para que estén horizontalmente las cajas */
+    float: left; /* Para que estén horizontalmente las cajas */
 }
 
 /* Css para el pie de página (footer) */
