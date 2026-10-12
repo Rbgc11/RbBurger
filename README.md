@@ -2,7 +2,7 @@
 
 Web de restaurante con parte cliente y panel de administración, creada con HTML, CSS, JavaScript, Bootstrap, PHP y MySQL.
 
-🎥 **https://youtu.be/jUHMY8jGzzI**
+🎥    🎥 **[Vídeo del funcionamiento de la web](https://youtu.be/jUHMY8jGzzI)**
 
 > Proyecto de demostración hecho en entorno local (XAMPP), sin servidor en producción.
 
